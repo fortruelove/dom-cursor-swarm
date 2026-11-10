@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DOM Cursor Swarm · React</title>
+  <link rel="stylesheet" href="../../src/style.css" />
+  <style>
+    body {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font: 18px/1.7 sans-serif;
+    }
+  </style>
+  <div id="app"></div>
+  <script type="module">
+    import React, { useState } from "react";
+    import { createRoot } from "react-dom/client";
+    import { CursorSwarm } from "../../dist/react.js";
+    const h = React.createElement,
+      options = {
+        labels: ["布局", "排版", "组件", "样式", "图像", "细节", "校对"],
+      };
+    function App() {
+      const [version, setVersion] = useState(0);
+      return h(
+        React.Fragment,
+        null,
+        h("button", { onClick: () => setVersion((v) => v + 1) }, "重播"),
+        h(
+          CursorSwarm,
+          { resetKey: version, options },
+          h("h1", null, "React 接入示例"),
+          h(
+            "p",
+            null,
+            "稳定的 options、明确的 resetKey，以及自动清理的组件生命周期。",
+          ),
+        ),
+      );
+    }
+    createRoot(document.getElementById("app")).render(
+      h(React.StrictMode, null, h(App)),
+    );
+  </script>
+</html>

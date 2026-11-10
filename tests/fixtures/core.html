@@ -1,0 +1,32 @@
+<!doctype html>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/src/style.css" />
+<style>
+  body {
+    font: 16px sans-serif;
+    margin: 32px;
+  }
+  .tile {
+    height: 50px;
+    width: 240px;
+    margin: 12px;
+  }
+</style>
+<div id="root">
+  <h1>Independent HTML fixture</h1>
+  <div class="tile" style="color: red; opacity: 0.8; clip-path: inset(0 0 0 0)">
+    A visual block
+  </div>
+  <p>Real existing text.</p>
+  <form>
+    <p>Never animate form content</p>
+    <input />
+  </form>
+  <button>Interactive</button>
+</div>
+<div id="other"><p>Separate animation root.</p></div>
+<script type="module">
+  import { createCursorSwarm } from "/dist/index.js";
+  window.createCursorSwarm = createCursorSwarm;
+  window.ready = true;
+</script>

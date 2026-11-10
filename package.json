@@ -1,0 +1,57 @@
+{
+  "name": "@fortruelove/dom-cursor-swarm",
+  "version": "0.1.0",
+  "description": "DOM-based cursor choreography for existing web pages, with an optional React adapter.",
+  "type": "module",
+  "license": "MIT",
+  "author": "fortruelove",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fortruelove/dom-cursor-swarm.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./style.css": "./src/style.css"
+  },
+  "files": [
+    "dist",
+    "src/style.css",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md",
+    "skills"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node tests/browser.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18 <20"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "vite": "^7.1.0",
+    "playwright": "^1.56.1"
+  }
+}

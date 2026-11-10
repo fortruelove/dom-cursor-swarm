@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DOM Cursor Swarm · HTML</title>
+  <link rel="stylesheet" href="../../src/style.css" />
+  <style>
+    body {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font: 18px/1.7 sans-serif;
+      background: #fafafa;
+    }
+    article {
+      padding: 24px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+    }
+  </style>
+  <nav>
+    <button id="replay">重播</button> <button id="skip">直接查看</button>
+  </nav>
+  <main>
+    <h1>真实 HTML，多光标逐步显示</h1>
+    <p>这里没有站点专用类名，也没有 React 或 AI API。</p>
+    <article data-cursor-swarm>
+      <h2>独立可复用组件</h2>
+      <p>选中已有元素，保持你的原有布局、文字和业务。</p>
+    </article>
+    <p>Esc 跳过；系统减少动态效果设置会直接显示内容。</p>
+  </main>
+  <script type="module">
+    import { createCursorSwarm } from "../../dist/index.js";
+    const swarm = createCursorSwarm(document.querySelector("main"));
+    swarm.start();
+    document.querySelector("#replay").onclick = () => swarm.start();
+    document.querySelector("#skip").onclick = () => swarm.skip();
+    window.addEventListener("pagehide", () => swarm.dispose(), { once: true });
+  </script>
+</html>

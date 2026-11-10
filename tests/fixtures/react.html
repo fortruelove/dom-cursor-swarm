@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/src/style.css" />
+<div id="app"></div>
+<script type="module">
+  import React from "react";
+  import { createRoot } from "react-dom/client";
+  import { CursorSwarm } from "/dist/react.js";
+  const root = createRoot(document.getElementById("app"));
+  const options = { speed: 1.5 };
+  window.render = (version = 0, enabled = true) =>
+    root.render(
+      React.createElement(
+        React.StrictMode,
+        null,
+        React.createElement(
+          CursorSwarm,
+          { options, resetKey: version, enabled },
+          React.createElement("h1", null, "React fixture " + version),
+          React.createElement("div", { id: "async" }),
+        ),
+      ),
+    );
+  window.unmount = () => root.unmount();
+  window.render();
+  window.ready = true;
+</script>
